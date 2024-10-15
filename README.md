@@ -1,55 +1,54 @@
-# Memory Game para Tablets
+# Memory Game for Tablets
 
-## Descripción del Proyecto
+## Project Description
 
-Este proyecto es un juego de memoria diseñado específicamente para tablets de 10 pulgadas, desarrollado en Android Studio utilizando Kotlin. El juego se centra en cuatro festividades de invierno: Navidad, Carnaval, Vella Quaresma y Reyes Magos. Cada festividad ofrece un nivel único que incorpora sus temas y elementos visuales.
+This project is a memory game designed specifically for 10-inch tablets, developed in Android Studio using Kotlin. The game focuses on four winter festivities: Christmas, Carnival, Vella Quaresma, and Reyes Magos. Each festivity offers a unique level that incorporates its themes and visual elements.
 
-## Requisitos
+## Requirements
 
-- **API objetivo**: 34
-- **API mínima**: 24
-- **Plataforma**: Tablets de 10 pulgadas
+- **Target API**: 34
+- **Minimum API**: 24
+- **Platform**: 10-inch tablets
 
-## Características
+## Features
 
-- **Cuatro niveles temáticos**: 
-  - **Navidad**
-  - **Carnaval**
+- **Four themed levels**: 
+  - **Christmas**
+  - **Carnival**
   - **Vella Quaresma**
   - **Reyes Magos**
 
-- **Almacenamiento de datos**: 
-  - Nombre del jugador
-  - Tiempo transcurrido en cada nivel
-  - Número de errores cometidos
-  - Fecha y hora de la partida
-  - Datos almacenados en formato JSON.
+- **Data Storage**: 
+  - Player name
+  - Time taken for each level
+  - Number of mistakes made
+  - Date and time of the game
+  - Data stored in JSON format.
 
-## Instalación
+## Installation
 
-1. Clona este repositorio en tu máquina local:
+1. Clone this repository to your local machine:
    ```bash
    git clone https://github.com/soyeldet/MemoryGame
    ```
 
-2. Abre el proyecto en Android Studio.
+2. Open the project in Android Studio.
 
-3. Asegúrate de tener las dependencias necesarias instaladas y configuradas.
+3. Ensure you have the necessary dependencies installed and configured.
 
-4. Conecta tu tablet o utiliza un emulador con las especificaciones adecuadas.
+4. Connect your tablet or use an emulator with the appropriate specifications.
 
-5. Ejecuta el proyecto.
+5. Run the project.
 
-## Uso
+## Usage
 
-- Cada nivel tiene su propio conjunto de tarjetas que debes memorizar.
-- Al finalizar cada nivel, se guardarán tus datos en formato JSON.
+- Each level has its own set of cards that you need to memorize.
+- At the end of each level, your data will be saved in JSON format.
 
-## Contribuciones
+## Contributions
 
-Las contribuciones son bienvenidas. Si deseas mejorar este proyecto, por favor, abre un **issue** o envía un **pull request**.
-
+Contributions are welcome. If you would like to improve this project, please open an **issue** or submit a **pull request**.
 
 ---
 
-¡Disfruta jugando y mejorando tu memoria!
+Enjoy playing and enhancing your memory!
