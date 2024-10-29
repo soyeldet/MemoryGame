@@ -25,6 +25,7 @@ class GameLevel1 : AppCompatActivity() {
     private var firstClickedPosition: Int? = null
     private var level: Int = 1
     private var seconds: Int = 0
+    private var minutes: Int = 0
     private var isRunning = false
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
@@ -93,6 +94,10 @@ class GameLevel1 : AppCompatActivity() {
             runnable = object : Runnable {
                 override fun run() {
                     seconds++
+                    if (seconds >= 60){
+                        minutes++
+                        seconds = 0
+                    }
                     handler.postDelayed(this, 1000)
                 }
             }
@@ -123,6 +128,7 @@ class GameLevel1 : AppCompatActivity() {
             secondHolder?.let { imageAdapter.flipCard(it) }
 
             if (firstItem == secondItem) {
+                attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
                     imageAdapter.remove(firstClickedPosition!!)
                     imageAdapter.remove(position)
@@ -135,10 +141,13 @@ class GameLevel1 : AppCompatActivity() {
                         val intent = Intent(this, RestartGame::class.java)
                         intent.putExtra("level", level)
                         intent.putExtra("seconds", seconds)
+                        intent.putExtra("minutes", minutes)
+                        intent.putExtra("attempts", attempts)
                         startActivity(intent)
                     }
                 }, 1200)
             } else {
+                attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
                     firstHolder?.let { imageAdapter.flipBackCard(it) }
                     secondHolder?.let { imageAdapter.flipBackCard(it) }
