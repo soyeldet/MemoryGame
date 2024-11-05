@@ -50,9 +50,9 @@ class GameLevel1 : AppCompatActivity() {
         startTimer()
 
         val items: MutableList<Int?> = mutableListOf(
-            R.drawable.c1, R.drawable.c1,
-            R.drawable.c2, R.drawable.c2,
-            R.drawable.c3, R.drawable.c3
+            R.drawable.q1, R.drawable.q1,
+            R.drawable.q2, R.drawable.q2,
+            R.drawable.q3, R.drawable.q3
         ).shuffled().toMutableList()
 
         val items2: MutableList<Int?> = MutableList(items.size / 2) { R.drawable.black }
