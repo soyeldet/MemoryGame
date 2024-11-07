@@ -7,4 +7,11 @@
     <color name="light_orange">#FFB74D</color>
     <color name="green">#4CAF50</color>
     <color name="red">#FF0000</color>
+    <color name="light_blue">#AED6F1</color>
+    <color name="purple_top">#D2B4DE</color>
+    <color name="orange_bottom">#FAD7A0</color>
+    <color name="yellow_top">#F9E79F</color>
+    <color name="light_green_bottom">#ABEBC6</color>
+    <color name="error_red">#E74C3C</color>
+    <color name="success_green">#27AE60</color>
 </resources>

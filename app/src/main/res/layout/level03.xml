@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:background="@color/white"
+        android:background="@color/light_green_bottom"
         >
 
         <FrameLayout
             android:layout_width="match_parent"
 
             android:layout_height="130dp"
-            android:background="@color/black"
+            android:background="@color/light_orange"
             >
 
             <GridView
@@ -47,6 +47,13 @@
             />
         />
 
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/winorlose"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

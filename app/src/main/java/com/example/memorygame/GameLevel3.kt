@@ -11,6 +11,7 @@ import android.view.MotionEvent
 import android.widget.FrameLayout
 import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,7 @@ class GameLevel3 : AppCompatActivity() {
     private lateinit var imageAdapter2: ImageAdapter2
     private lateinit var gridView: GridView
     private lateinit var frameLayout: FrameLayout
+    private lateinit var winorlose: FrameLayout
     private var firstClickedPosition: Int? = null
     private var isClickable = true
     private var level: Int = 3
@@ -40,12 +42,14 @@ class GameLevel3 : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         gridView = findViewById(R.id.gridVIew)
         frameLayout = findViewById(R.id.frameLayout)
+        winorlose = findViewById(R.id.winorlose)
         recyclerView.layoutManager = LinearLayoutManager(this)
         val gridLayoutManager = GridLayoutManager(this, 5)
         recyclerView.layoutManager = gridLayoutManager
         recyclerView.isNestedScrollingEnabled = false
         recyclerView.isScrollContainer = false
         gridView.isNestedScrollingEnabled = false
+        winorlose.alpha = 0f
 
         handler = Handler()
         startTimer()
@@ -129,6 +133,8 @@ class GameLevel3 : AppCompatActivity() {
             secondHolder?.let { imageAdapter.flipCard(it) }
 
             if (firstItem == secondItem) {
+                winorlose.alpha = 0.5f
+                winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.success_green))
                 attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
                     imageAdapter.remove(firstClickedPosition!!)
@@ -146,13 +152,17 @@ class GameLevel3 : AppCompatActivity() {
                         intent.putExtra("attempts", attempts)
                         startActivity(intent)
                     }
+                    winorlose.alpha = 0f
                 }, 1200)
             } else {
+                winorlose.alpha = 0.5f
+                winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.error_red))
                 attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
                     firstHolder?.let { imageAdapter.flipBackCard(it) }
                     secondHolder?.let { imageAdapter.flipBackCard(it) }
                     firstClickedPosition = null
+                    winorlose.alpha = 0f
                 }, 1200)
             }
         }
