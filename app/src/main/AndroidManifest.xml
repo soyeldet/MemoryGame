@@ -33,6 +33,10 @@
         <activity android:name=".RestartGame">
 
         </activity>
+
+        <activity android:name=".AvatarActivity">
+
+        </activity>
     </application>
 
 </manifest>

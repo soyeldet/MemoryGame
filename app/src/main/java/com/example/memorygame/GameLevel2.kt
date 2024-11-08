@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.MotionEvent
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
@@ -32,12 +33,22 @@ class GameLevel2 : AppCompatActivity() {
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
     private var attempts: Int = 0
+    private var avatar = 0
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         super.onCreate(savedInstanceState)
         setContentView(R.layout.level02)
+
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_FULLSCREEN or
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                )
+
+        avatar = intent.getIntExtra("avatar", -1)
+
         recyclerView = findViewById(R.id.recyclerView)
         gridView = findViewById(R.id.gridVIew)
         frameLayout = findViewById(R.id.frameLayout)
@@ -60,7 +71,7 @@ class GameLevel2 : AppCompatActivity() {
             R.drawable.c4, R.drawable.c4,
         ).shuffled().toMutableList()
 
-        val items2: MutableList<Int?> = MutableList(items.size / 2) { R.drawable.black }
+        val items2: MutableList<Int?> = MutableList(items.size / 2) { R.drawable.purple }
 
         gridView.numColumns = items2.size
         imageAdapter = ImageAdapter(items)
@@ -134,8 +145,10 @@ class GameLevel2 : AppCompatActivity() {
             secondHolder?.let { imageAdapter.flipCard(it) }
 
             if (firstItem == secondItem) {
-                winorlose.alpha = 0.5f
-                winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.success_green))
+                Handler(Looper.getMainLooper()).postDelayed({
+                    winorlose.alpha = 0.5f
+                    winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.success_green))
+                }, 700)
                 attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
                     imageAdapter.remove(firstClickedPosition!!)
@@ -151,13 +164,16 @@ class GameLevel2 : AppCompatActivity() {
                         intent.putExtra("seconds", seconds)
                         intent.putExtra("minutes", minutes)
                         intent.putExtra("attempts", attempts)
+                        intent.putExtra("avatar", avatar)
                         startActivity(intent)
                     }
                     winorlose.alpha = 0f
                 }, 1200)
             } else {
-                winorlose.alpha = 0.5f
-                winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.error_red))
+                Handler(Looper.getMainLooper()).postDelayed({
+                    winorlose.alpha = 0.5f
+                    winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.error_red))
+                }, 700)
                 attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
                     firstHolder?.let { imageAdapter.flipBackCard(it) }
