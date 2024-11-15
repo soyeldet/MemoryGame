@@ -1,5 +1,6 @@
 package com.example.memorygame
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         super.onCreate(savedInstanceState)
@@ -17,11 +19,9 @@ class MainActivity : AppCompatActivity() {
 
 
         val intent = Intent(this, AvatarActivity::class.java)
-        val memoryButton = findViewById<Button>(R.id.memoryButton)
-        val simonButton = findViewById<Button>(R.id.simonButton)
-
-        simonButton.isEnabled = false
-        simonButton.alpha = 0.5f
+        val intent2 = Intent(this, AdminPanel::class.java)
+        val playerButton = findViewById<Button>(R.id.playerButton)
+        val adminButton = findViewById<Button>(R.id.adminButton)
 
         window.decorView.systemUiVisibility = (
                 View.SYSTEM_UI_FLAG_FULLSCREEN or
@@ -29,8 +29,14 @@ class MainActivity : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 )
 
-        memoryButton.setOnClickListener{
+        playerButton.setOnClickListener{
             startActivity(intent)
         }
+
+        adminButton.setOnClickListener{
+            startActivity(intent2)
+        }
+
+
     }
 }

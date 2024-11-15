@@ -16,31 +16,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="160dp"
-            android:text="GAMES"
+            android:layout_marginTop="150dp"
+            android:text="MENU PRINCIPAL"
             android:textAlignment="center"
             android:textSize="100sp"
             tools:ignore="HardcodedText" />
 
         <Button
-            android:id="@+id/memoryButton"
+            android:id="@+id/playerButton"
             android:layout_width="350dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="320dp"
+            android:layout_marginTop="340dp"
             android:textSize="30sp"
-            android:text="MEMORY"
+            android:text="JUGADOR"
             tools:ignore="HardcodedText">
         </Button>
 
         <Button
-            android:id="@+id/simonButton"
+            android:id="@+id/adminButton"
             android:layout_width="350dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="440dp"
+            android:layout_marginTop="460dp"
             android:textSize="30sp"
-            android:text="SIMON SAYS"
+            android:text="ADMIN"
             tools:ignore="HardcodedText">
         </Button>
 

@@ -37,6 +37,12 @@
         <activity android:name=".AvatarActivity">
 
         </activity>
+        <activity android:name=".AdminPanel">
+
+        </activity>
+        <activity android:name=".ImageStart">
+
+        </activity>
     </application>
 
 </manifest>
