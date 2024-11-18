@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val intent = Intent(this, AvatarActivity::class.java)
+        val intent = Intent(this, ImageStart::class.java)
         val intent2 = Intent(this, AdminPanel::class.java)
         val playerButton = findViewById<Button>(R.id.playerButton)
         val adminButton = findViewById<Button>(R.id.adminButton)

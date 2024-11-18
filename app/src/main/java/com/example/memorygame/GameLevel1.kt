@@ -34,7 +34,7 @@ class GameLevel1 : AppCompatActivity() {
     private lateinit var runnable: Runnable
     private var attempts: Int = 0
     private var isClickable = true
-    private var avatar = 0
+    private var avatar: Int = 0
 
 
     @SuppressLint("MissingInflatedId")

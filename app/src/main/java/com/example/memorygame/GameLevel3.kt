@@ -34,7 +34,7 @@ class GameLevel3 : AppCompatActivity() {
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
     private var attempts: Int = 0
-    private var avatar = 0
+    private var avatar: Int = 0
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +48,7 @@ class GameLevel3 : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 )
 
-        avatar = intent.getIntExtra("avatar", -1)
+        avatar = intent.getIntExtra("avatar2", -1)
 
         recyclerView = findViewById(R.id.recyclerView)
         gridView = findViewById(R.id.gridVIew)
@@ -183,5 +183,4 @@ class GameLevel3 : AppCompatActivity() {
             }
         }
     }
-
 }

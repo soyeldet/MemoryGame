@@ -11,6 +11,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.GridView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -33,7 +34,7 @@ class GameLevel2 : AppCompatActivity() {
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
     private var attempts: Int = 0
-    private var avatar = 0
+    private var avatar: Int = 0
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +48,9 @@ class GameLevel2 : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 )
 
-        avatar = intent.getIntExtra("avatar", -1)
+        avatar = intent.getIntExtra("avatar2", -1)
+
+        Toast.makeText(this, avatar.toString(), Toast.LENGTH_SHORT).show()
 
         recyclerView = findViewById(R.id.recyclerView)
         gridView = findViewById(R.id.gridVIew)

@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import android.content.Context
+import android.widget.Toast
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -35,11 +36,16 @@ class RestartGame : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 )
 
+
         val level: Int? = intent.getIntExtra("level", -1)
         val seconds: Int? = intent.getIntExtra("seconds", -1)
         val minutes: Int? = intent.getIntExtra("minutes", -1)
         val attempts: Int? = intent.getIntExtra("attempts", -1)
         val avatar: Int? = intent.getIntExtra("avatar", -1)
+
+        if (avatar != null) {
+            Toast.makeText(this, avatar.toString(), Toast.LENGTH_SHORT).show()
+        }
 
         val wonButton = findViewById<ImageButton>(R.id.wonButton)
         val restartButton = findViewById<ImageButton>(R.id.restartButton)
@@ -53,59 +59,130 @@ class RestartGame : AppCompatActivity() {
 
         val timeFormatted = "$minutes:$seconds"
 
-        if (level == 1){
+        if (level == 1) {
             saveAvatarData(this, avatar ?: -1, level ?: 1, timeFormatted, attempts ?: 0)
             intent2 = Intent(this, GameLevel1::class.java)
             intent3 = Intent(this, GameLevel2::class.java)
-        } else if (level == 2){
+        } else if (level == 2) {
             saveAvatarData(this, avatar ?: -1, level ?: 1, timeFormatted, attempts ?: 0)
             intent2 = Intent(this, GameLevel2::class.java)
             intent3 = Intent(this, GameLevel3::class.java)
-        } else if (level == 3){
+        } else if (level == 3) {
             saveAvatarData(this, avatar ?: -1, level ?: 1, timeFormatted, attempts ?: 0)
             wonButton.setBackgroundColor(ContextCompat.getColor(this, R.color.red))
             val bitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.exit)
             wonButton.setImageBitmap(bitmap)
 
 
-
             intent2 = Intent(this, GameLevel3::class.java)
             intent3 = Intent(this, MainActivity::class.java)
         }
 
-        wonButton.setOnClickListener{
+        wonButton.setOnClickListener {
+            intent3.putExtra("avatar2", avatar)
             startActivity(intent3)
         }
 
-        restartButton.setOnClickListener{
+        restartButton.setOnClickListener {
+            intent2.putExtra("avatar2", avatar)
             startActivity(intent2)
         }
 
     }
+
     fun saveAvatarData(context: Context, avatar: Int, level: Int, time: String, attempts: Int) {
+        // Verificar si el avatar es válido (no -1)
+        if (avatar == -1) {
+            return  // No guardar si el avatar es inválido
+        }
+
         try {
             val file = File(context.filesDir, "player_data.json")
 
+            // Si el archivo no existe, inicializamos una estructura básica
             val playerData = if (file.exists()) {
                 val jsonString = file.readText()
                 JSONObject(jsonString)
             } else {
                 JSONObject().apply {
-                    put("avatar", avatar)
-                    put("levels", JSONArray())
+                    put("groups", JSONArray())  // Contenedor de grupos
                 }
             }
 
-            val levels = playerData.getJSONArray("levels")
+            // Obtener el array de grupos
+            val groups = playerData.getJSONArray("groups")
 
-            val levelData = JSONObject().apply {
-                put("level", level)
-                put("time", time)
-                put("attempts", attempts)
+            // Verificamos si ya existe un grupo con menos de 5 avatares, si no, creamos uno nuevo
+            var currentGroup = getCurrentGroup(groups)
+
+            if (currentGroup == null || currentGroup.getJSONArray("avatars").length() >= 5) {
+                // Si no hay grupo disponible o ya se tienen 5 avatares, generamos un nuevo grupo
+                currentGroup = JSONObject().apply {
+                    put("group", groups.length() + 1)  // Incrementar el número de grupo
+                    put("avatars", JSONArray())  // Lista de avatares en este grupo
+                }
+                groups.put(currentGroup)  // Agregar el nuevo grupo al array de grupos
             }
 
-            levels.put(levelData)
+            // Obtener los avatares del grupo actual
+            val avatars = currentGroup.getJSONArray("avatars")
 
+            // Verificar si ya existe el avatar en el grupo
+            var avatarExists = false
+            for (i in 0 until avatars.length()) {
+                val avatarData = avatars.getJSONObject(i)
+                if (avatarData.getInt("avatar") == avatar) {
+                    // Si el avatar ya existe, buscamos el nivel en la lista de niveles
+                    val levels = avatarData.getJSONArray("levels")
+                    var levelExists = false
+
+                    // Verificamos si ya existe el nivel. Si es así, lo actualizamos.
+                    for (j in 0 until levels.length()) {
+                        val levelData = levels.getJSONObject(j)
+                        if (levelData.getInt("level") == level) {
+                            // Si el nivel ya existe, lo actualizamos
+                            levelData.put("time", time)
+                            levelData.put("attempts", attempts)
+                            levelExists = true
+                            break
+                        }
+                    }
+
+                    // Si el nivel no existía, lo agregamos como un nuevo nivel
+                    if (!levelExists) {
+                        val levelData = JSONObject().apply {
+                            put("level", level)
+                            put("time", time)
+                            put("attempts", attempts)
+                        }
+                        levels.put(levelData)
+                    }
+
+                    avatarExists = true
+                    break
+                }
+            }
+
+            // Si el avatar no existe en el grupo, lo creamos
+            if (!avatarExists) {
+                val avatarData = JSONObject().apply {
+                    put("avatar", avatar)
+                    val levels = JSONArray()
+
+                    // Agregar el primer nivel
+                    val levelData = JSONObject().apply {
+                        put("level", level)
+                        put("time", time)
+                        put("attempts", attempts)
+                    }
+
+                    levels.put(levelData)  // Agregar el primer nivel
+                    put("levels", levels)
+                }
+                avatars.put(avatarData)
+            }
+
+            // Guardar los datos de vuelta en el archivo
             FileOutputStream(file).use { outputStream ->
                 outputStream.write(playerData.toString().toByteArray())
             }
@@ -114,4 +191,18 @@ class RestartGame : AppCompatActivity() {
             e.printStackTrace()
         }
     }
+
+
+    // Función para obtener el grupo actual o `null` si no existe un grupo adecuado
+    fun getCurrentGroup(groups: JSONArray): JSONObject? {
+        for (i in 0 until groups.length()) {
+            val group = groups.getJSONObject(i)
+            val avatars = group.getJSONArray("avatars")
+            if (avatars.length() < 5) {
+                return group  // Retorna el primer grupo con menos de 5 avatares
+            }
+        }
+        return null  // No hay grupo disponible
+    }
+
 }
