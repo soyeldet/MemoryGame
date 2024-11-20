@@ -60,15 +60,12 @@ class RestartGame : AppCompatActivity() {
         val timeFormatted = "$minutes:$seconds"
 
         if (level == 1) {
-            saveAvatarData(this, avatar ?: -1, level ?: 1, timeFormatted, attempts ?: 0)
             intent2 = Intent(this, GameLevel1::class.java)
             intent3 = Intent(this, GameLevel2::class.java)
         } else if (level == 2) {
-            saveAvatarData(this, avatar ?: -1, level ?: 1, timeFormatted, attempts ?: 0)
             intent2 = Intent(this, GameLevel2::class.java)
             intent3 = Intent(this, GameLevel3::class.java)
         } else if (level == 3) {
-            saveAvatarData(this, avatar ?: -1, level ?: 1, timeFormatted, attempts ?: 0)
             wonButton.setBackgroundColor(ContextCompat.getColor(this, R.color.red))
             val bitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.exit)
             wonButton.setImageBitmap(bitmap)
@@ -79,6 +76,7 @@ class RestartGame : AppCompatActivity() {
         }
 
         wonButton.setOnClickListener {
+            saveAvatarData(this, avatar ?: -1, level ?: 1, timeFormatted, attempts ?: 0)
             intent3.putExtra("avatar2", avatar)
             startActivity(intent3)
         }
@@ -116,12 +114,11 @@ class RestartGame : AppCompatActivity() {
             var currentGroup = getCurrentGroup(groups)
 
             if (currentGroup == null || currentGroup.getJSONArray("avatars").length() >= 5) {
-                // Si no hay grupo disponible o ya se tienen 5 avatares, generamos un nuevo grupo
                 currentGroup = JSONObject().apply {
-                    put("group", groups.length() + 1)  // Incrementar el número de grupo
-                    put("avatars", JSONArray())  // Lista de avatares en este grupo
+                    put("group", groups.length() + 1)
+                    put("avatars", JSONArray())
                 }
-                groups.put(currentGroup)  // Agregar el nuevo grupo al array de grupos
+                groups.put(currentGroup)
             }
 
             // Obtener los avatares del grupo actual
