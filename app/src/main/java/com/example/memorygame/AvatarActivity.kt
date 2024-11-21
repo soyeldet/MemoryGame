@@ -58,8 +58,11 @@ class AvatarActivity : AppCompatActivity() {
         val avatar4 = R.drawable.a4
         val avatar5 = R.drawable.a5
 
+
         val avatarsJSON = currentGroup.getJSONArray("avatars")
+
         val avatars: MutableList<Int?> = mutableListOf(avatar1, avatar2, avatar3, avatar4, avatar5)
+
         val usedAvatars: MutableList<Int?> = mutableListOf()
 
         for (i in 0 until avatarsJSON.length()) {
@@ -88,6 +91,7 @@ class AvatarActivity : AppCompatActivity() {
 
         imageAdapter = ImageAdapter3(avatars)
         gridView.adapter = imageAdapter
+
 
         gridView.setOnItemClickListener{
         _, _, position, _ ->
