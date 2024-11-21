@@ -71,24 +71,26 @@ class AvatarActivity : AppCompatActivity() {
         usedAvatars.filterNotNull().sorted()
         usedAvatars.sortBy { it }
 
-        for (i in usedAvatars.indices.reversed()) {
-            if (avatars.reversed().contains(avatars[i])) {
-                avatars.removeAt(i)
+        for (i in 0 until avatarsJSON.length()){
+            val avatarToRemove = when (usedAvatars[i]) {
+                1 -> avatar1
+                2 -> avatar2
+                3 -> avatar3
+                4 -> avatar4
+                5 -> avatar5
+                else -> null
+            }
+
+            avatarToRemove?.let {
+                avatars.remove(it)
             }
         }
-
-
-
-
-
-        Toast.makeText(this, usedAvatars.toString(), Toast.LENGTH_SHORT).show()
-        Toast.makeText(this, avatars.toString(), Toast.LENGTH_SHORT).show()
 
         imageAdapter = ImageAdapter3(avatars)
         gridView.adapter = imageAdapter
 
         gridView.setOnItemClickListener{
-        parent, view, position, id ->
+        _, _, position, _ ->
 
             val selectedImageName = when (position) {
                 0 -> 1
@@ -104,7 +106,7 @@ class AvatarActivity : AppCompatActivity() {
         startActivity(intent)
     }
     }
-    fun getCurrentGroup(groups: JSONArray): JSONObject? {
+    private fun getCurrentGroup(groups: JSONArray): JSONObject? {
         for (i in 0 until groups.length()) {
             val group = groups.getJSONObject(i)
             val avatars = group.getJSONArray("avatars")
