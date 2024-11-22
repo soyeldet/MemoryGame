@@ -30,17 +30,17 @@
         <activity android:name=".GameLevel3">
 
         </activity>
-        <activity android:name=".RestartGame">
+        <activity android:name=".RestartGameActivity">
 
         </activity>
 
-        <activity android:name=".AvatarActivity">
+        <activity android:name=".AvatarsActivity">
 
         </activity>
-        <activity android:name=".AdminPanel">
+        <activity android:name=".AdminPanelActivity">
 
         </activity>
-        <activity android:name=".ImageStart">
+        <activity android:name=".StartGameActivity">
 
         </activity>
     </application>

@@ -6,16 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:gravity="center"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:background="@drawable/background"
     >
+
 
     <FrameLayout
         android:id="@+id/frameLayoutAvatars"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:layout_gravity="center">
-        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ESCOGE TU AVATAR"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="75dp"
+            android:textSize="100sp"
+            >
+        </TextView>
 
         <GridView
             android:id="@+id/gridViewAvatars"

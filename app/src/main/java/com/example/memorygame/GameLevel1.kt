@@ -1,6 +1,6 @@
 package com.example.memorygame
 
-import ImageAdapter
+import com.example.memorygame.adapters.ImageAdapter
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -11,12 +11,12 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.GridView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.memorygame.adapters.ImageAdapter2
 
 class GameLevel1 : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -159,7 +159,7 @@ class GameLevel1 : AppCompatActivity() {
                     val allNull = items.all { it.toString() == "null" }
 
                     if (allNull) {
-                        val intent = Intent(this, RestartGame::class.java)
+                        val intent = Intent(this, RestartGameActivity::class.java)
                         intent.putExtra("level", level)
                         intent.putExtra("seconds", seconds)
                         intent.putExtra("minutes", minutes)
