@@ -56,8 +56,18 @@ class AvatarsActivity : AppCompatActivity() {
     private fun getAvatars(): MutableList<Int?> {
 
         val file = File(this.filesDir, "player_data.json")
-        val playerData = JSONObject(file.readText())
-        val groups = playerData.optJSONArray("groups") ?: JSONArray()
+
+        val playerData = if (file.exists()) {
+            val jsonString = file.readText()
+            JSONObject(jsonString)
+        } else {
+            JSONObject().apply {
+                put("groups", JSONArray())
+            }
+        }
+
+        val groups = playerData.getJSONArray("groups")
+
         val currentGroup = getCurrentGroup(groups)
 
         val avatar1 = R.drawable.a1

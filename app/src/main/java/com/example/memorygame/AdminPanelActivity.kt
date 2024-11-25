@@ -57,8 +57,18 @@ class AdminPanelActivity : AppCompatActivity() {
 
     private fun getGroups(): MutableList<Int?> {
         val file = File(this.filesDir, "player_data.json")
-        val playerData = JSONObject(file.readText())
-        val groups = playerData.optJSONArray("groups") ?: JSONArray()
+
+        val playerData = if (file.exists()) {
+            val jsonString = file.readText()
+            JSONObject(jsonString)
+        } else {
+            JSONObject().apply {
+                put("groups", JSONArray())
+            }
+        }
+
+        val groups = playerData.getJSONArray("groups")
+
         val groupList = mutableListOf<Int?>()
         for (i in 0 until groups.length()) {
             groupList.add(groups.optInt(i))

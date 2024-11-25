@@ -33,33 +33,29 @@ class GroupActivity : AppCompatActivity() {
             return
         }
 
-        groupsJSON = getGroups()  // Cargar los datos del archivo
+        groupsJSON = getGroups()
 
-        // Poblar la información en la UI
         loadGroupData(group!!)
     }
 
     private fun getGroups(): JSONObject {
         val file = File(this.filesDir, "player_data.json")
         val playerData = JSONObject(file.readText())
-        return playerData  // Regresa todo el objeto JSON para trabajarlo más adelante
+        return playerData
     }
 
     private fun loadGroupData(group: Int) {
         val groupsArray = groupsJSON.getJSONArray("groups")
 
-        // Buscar el grupo especificado
         for (i in 0 until groupsArray.length()) {
             val groupObject = groupsArray.getJSONObject(i)
             if (groupObject.getInt("group") == group) {
-                // Este es el grupo seleccionado, ahora poblar los datos
                 val avatars = groupObject.getJSONArray("avatars")
                 for (j in 0 until avatars.length()) {
                     val avatarObj = avatars.getJSONObject(j)
                     val avatar = avatarObj.getInt("avatar")
                     val levels = avatarObj.getJSONArray("levels")
 
-                    // Dependiendo del avatar, asignamos los datos a los TextViews
                     when (avatar) {
                         1 -> {
                             setAvatarData(avatar, levels, R.id.avatar1, R.id.nivel1avatar1, R.id.nivel2avatar1, R.id.nivel3avatar1)
@@ -78,7 +74,6 @@ class GroupActivity : AppCompatActivity() {
                         }
                     }
                 }
-                break  // Ya hemos encontrado el grupo, no es necesario seguir buscando
             }
         }
     }
@@ -89,10 +84,8 @@ class GroupActivity : AppCompatActivity() {
         val level2TextView = findViewById<TextView>(level2TextId)
         val level3TextView = findViewById<TextView>(level3TextId)
 
-        // Seteamos el nombre del avatar (ejemplo: Avatar 1, Avatar 2, etc.)
         avatarTextView.text = "Avatar $avatar"
 
-        // Para cada nivel, actualizamos el texto correspondiente (si existe nivel 1, 2 y 3)
         for (i in 0 until levels.length()) {
             val levelData = levels.getJSONObject(i)
             val level = levelData.getInt("level")
