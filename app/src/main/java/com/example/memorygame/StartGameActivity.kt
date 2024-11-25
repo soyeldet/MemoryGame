@@ -11,6 +11,15 @@ import androidx.appcompat.app.AppCompatActivity
 class StartGameActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
+
+        // Posibilidad de quitar la musica
+
+
+
+
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_game)
@@ -35,6 +44,6 @@ class StartGameActivity : AppCompatActivity() {
             startActivity(intent2)
         }
 
-
+        //
     }
 }

@@ -45,6 +45,12 @@
         <activity android:name=".GroupActivity">
 
         </activity>
+        <activity
+            android:name=".MusicService"
+            android:exported="true">
+        </activity>
+
+        <service android:name=".MusicService" />
 
         <meta-data
             android:name="preloaded_fonts"
