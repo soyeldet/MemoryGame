@@ -2,78 +2,299 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    android:layout_height="match_parent">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
 
-
-        <FrameLayout
-            android:id="@+id/avatar1"
-            android:layout_width="0dp"
+        <TableLayout
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/avatar2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/yellow_top"
-            >
+            android:stretchColumns="1"
+            android:padding="8dp"
+            android:orientation="vertical">
 
-        </FrameLayout>
+            <TableRow>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:padding="16dp"
+                     />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nivel 1"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nivel 2"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nivel 3"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+            </TableRow>
 
-        <FrameLayout
-            android:id="@+id/avatar2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@id/avatar1"
-            app:layout_constraintEnd_toStartOf="@id/avatar3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/light_blue"
-            >
+            <TableRow>
+                <TextView
+                    android:id="@+id/avatar1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Avatar 1"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel1avatar1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel2avatar1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel3avatar1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+            </TableRow>
 
-        </FrameLayout>
+            <TableRow>
+                <TextView
+                    android:id="@+id/avatar2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Avatar 2"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel1avatar2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel2avatar2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel3avatar2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+            </TableRow>
 
+            <TableRow>
+                <TextView
+                    android:id="@+id/avatar3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Avatar 3"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel1avatar3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel2avatar3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel3avatar3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+            </TableRow>
 
-        <FrameLayout
-            android:id="@+id/avatar3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@id/avatar2"
-            app:layout_constraintEnd_toStartOf="@id/avatar4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/black"
-            >
+            <TableRow>
+                <TextView
+                    android:id="@+id/avatar4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Avatar 4"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel1avatar4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel2avatar4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel3avatar4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+            </TableRow>
 
-        </FrameLayout>
+            <TableRow>
+                <TextView
+                    android:id="@+id/avatar5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Avatar 5"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel1avatar5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel2avatar5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+                <TextView
+                    android:id="@+id/nivel3avatar5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp"
+                    android:background="@drawable/border" />
+            </TableRow>
 
-
-        <FrameLayout
-            android:id="@+id/avatar4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@id/avatar3"
-            app:layout_constraintEnd_toStartOf="@id/avatar5"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/red"
-            >
-
-        </FrameLayout>
-
-
-        <FrameLayout
-            android:id="@+id/avatar5"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@id/avatar4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/fuchsia"
-            >
+        </TableLayout>
 
     </FrameLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

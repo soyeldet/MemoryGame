@@ -47,7 +47,7 @@ class AdminPanelActivity : AppCompatActivity() {
 
         gridView.setOnItemClickListener { _, _, position, _ ->
             val intent = Intent(this, GroupActivity::class.java)
-            intent.putExtra("group", position)
+            intent.putExtra("group", position+1)
             startActivity(intent)
         }
 
