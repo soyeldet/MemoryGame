@@ -33,16 +33,28 @@
                 >
             </GridView>
         </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayoutRecyclerVIew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:foregroundGravity="center"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="12dp"
+        >
         <androidx.recyclerview.widget.RecyclerView
             android:layout_marginBottom="-20dp"
             android:id="@+id/recyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center|bottom"
             tools:ignore="MissingConstraints"
-            android:layout_marginEnd="-45dp"
-            android:scrollbars="none"
-            />
+            android:scrollbars="none">
+        </androidx.recyclerview.widget.RecyclerView>
+    </FrameLayout>
+
 </FrameLayout>
 
     <FrameLayout

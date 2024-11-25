@@ -3,6 +3,7 @@ package com.example.memorygame.adapters
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,11 @@ import com.example.memorygame.R
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
 
-class ImageAdapter(val items: MutableList<Int?>) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
+class ImageAdapterRecyclerVIew(val items: MutableList<Int?>) : RecyclerView.Adapter<ImageAdapterRecyclerVIew.ViewHolder>() {
+
+    fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+        return true
+    }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageFront: ImageView = view.findViewById(R.id.imageFront)
@@ -18,10 +23,12 @@ class ImageAdapter(val items: MutableList<Int?>) : RecyclerView.Adapter<ImageAda
         val cardFront: CardView = view.findViewById(R.id.cardFront)
         val cardBack: CardView = view.findViewById(R.id.cardBack)
 
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item_layout, parent, false)
         return ViewHolder(view)
     }
 

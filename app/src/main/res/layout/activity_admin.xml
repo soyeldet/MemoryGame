@@ -11,18 +11,20 @@
         android:layout_gravity="center"
         >
 
-        <TextView
+        <GridView
+            android:id="@+id/gridViewGroups"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Not implemented"
-            android:textSize="80sp"
+            android:layout_centerInParent="true"
+            android:stretchMode="columnWidth"
             android:layout_gravity="center"
-            tools:ignore="MissingConstraints">
-        </TextView>
+            android:gravity="center"
+            android:foregroundGravity="center"
+            android:numColumns="1"
+            android:padding="16dp"
+            android:layout_centerHorizontal="true"
+            android:verticalSpacing="30dp"
+            tools:ignore="ObsoleteLayoutParam" />
 
     </FrameLayout>
-
-
-
 </LinearLayout>

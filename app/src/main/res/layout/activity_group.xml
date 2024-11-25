@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
+
+        <FrameLayout
+            android:id="@+id/avatar1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/avatar2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/yellow_top"
+            >
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/avatar2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toEndOf="@id/avatar1"
+            app:layout_constraintEnd_toStartOf="@id/avatar3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/light_blue"
+            >
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/avatar3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toEndOf="@id/avatar2"
+            app:layout_constraintEnd_toStartOf="@id/avatar4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/black"
+            >
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/avatar4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toEndOf="@id/avatar3"
+            app:layout_constraintEnd_toStartOf="@id/avatar5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/red"
+            >
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/avatar5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toEndOf="@id/avatar4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/fuchsia"
+            >
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

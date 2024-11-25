@@ -28,7 +28,7 @@ class RestartGameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.levelfinished)
+        setContentView(R.layout.activity_restart_game)
 
         window.decorView.systemUiVisibility = (
                 View.SYSTEM_UI_FLAG_FULLSCREEN or
@@ -42,10 +42,6 @@ class RestartGameActivity : AppCompatActivity() {
         val minutes: Int? = intent.getIntExtra("minutes", -1)
         val attempts: Int? = intent.getIntExtra("attempts", -1)
         val avatar: Int? = intent.getIntExtra("avatar", -1)
-
-        if (avatar != null) {
-            Toast.makeText(this, avatar.toString(), Toast.LENGTH_SHORT).show()
-        }
 
         val wonButton = findViewById<ImageButton>(R.id.wonButton)
         val restartButton = findViewById<ImageButton>(R.id.restartButton)

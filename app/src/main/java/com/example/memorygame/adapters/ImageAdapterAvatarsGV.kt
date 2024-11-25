@@ -7,7 +7,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import com.example.memorygame.R
 
-class ImageAdapter3(private val items: MutableList<Int?>) : BaseAdapter() {
+class ImageAdapterAvatarsGV(private val items: MutableList<Int?>) : BaseAdapter() {
 
     override fun getCount(): Int {
         return items.size
@@ -25,7 +25,7 @@ class ImageAdapter3(private val items: MutableList<Int?>) : BaseAdapter() {
         var view = convertView
         if (view == null) {
             val inflater = LayoutInflater.from(parent?.context)
-            view = inflater.inflate(R.layout.avatar_icon, parent, false)
+            view = inflater.inflate(R.layout.avatar_icon_layout, parent, false)
         }
 
         val imageView: ImageView = view?.findViewById(R.id.imageView) ?: return view!!

@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.memorygame.adapters.ImageAdapter3
+import com.example.memorygame.adapters.ImageAdapterAvatarsGV
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -14,13 +14,13 @@ import java.io.File
 class AvatarsActivity : AppCompatActivity() {
 
     private lateinit var gridView: GridView
-    private lateinit var imageAdapter: ImageAdapter3
+    private lateinit var imageAdapter: ImageAdapterAvatarsGV
     private lateinit var avatars: MutableList<Int?>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.avatars_layout)
+        setContentView(R.layout.activity_avatars)
 
         window.decorView.systemUiVisibility = (
                 View.SYSTEM_UI_FLAG_FULLSCREEN or
@@ -32,7 +32,7 @@ class AvatarsActivity : AppCompatActivity() {
 
         avatars = getAvatars()
 
-        imageAdapter = ImageAdapter3(avatars)
+        imageAdapter = ImageAdapterAvatarsGV(avatars)
         gridView.adapter = imageAdapter
 
 

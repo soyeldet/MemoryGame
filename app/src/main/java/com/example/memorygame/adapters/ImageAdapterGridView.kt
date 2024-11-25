@@ -7,7 +7,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import com.example.memorygame.R
 
-class ImageAdapter2(private val items: MutableList<Int?>, private val items1: MutableList<Int?>) : BaseAdapter() {
+class ImageAdapterGridView(private val items: MutableList<Int?>, private val items1: MutableList<Int?>) : BaseAdapter() {
 
     val correctAnswer = mutableListOf<Int>()
 
@@ -21,7 +21,7 @@ class ImageAdapter2(private val items: MutableList<Int?>, private val items1: Mu
 
         if (convertView == null) {
             val inflater = LayoutInflater.from(parent?.context)
-            gridView = inflater.inflate(R.layout.grid_item, parent, false)
+            gridView = inflater.inflate(R.layout.grid_item_layout, parent, false)
             imageView = gridView.findViewById(R.id.imageView)
             gridView.tag = imageView
         } else {

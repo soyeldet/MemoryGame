@@ -13,7 +13,7 @@ class StartGameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.startgame_layout)
+        setContentView(R.layout.activity_start_game)
 
 
         val intent = Intent(this, AvatarsActivity::class.java)

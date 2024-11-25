@@ -1,6 +1,6 @@
 package com.example.memorygame
 
-import com.example.memorygame.adapters.ImageAdapter
+import com.example.memorygame.adapters.ImageAdapterRecyclerVIew
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -16,13 +16,13 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.memorygame.adapters.ImageAdapter2
+import com.example.memorygame.adapters.ImageAdapterGridView
 
 
 class GameLevel3 : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var imageAdapter: ImageAdapter
-    private lateinit var imageAdapter2: ImageAdapter2
+    private lateinit var imageAdapterRecyclerVIew: ImageAdapterRecyclerVIew
+    private lateinit var imageAdapterGridView: ImageAdapterGridView
     private lateinit var gridView: GridView
     private lateinit var frameLayout: FrameLayout
     private lateinit var winorlose: FrameLayout
@@ -41,7 +41,7 @@ class GameLevel3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.level03)
+        setContentView(R.layout.activity_game_level)
 
         window.decorView.systemUiVisibility = (
                 View.SYSTEM_UI_FLAG_FULLSCREEN or
@@ -74,13 +74,13 @@ class GameLevel3 : AppCompatActivity() {
             R.drawable.n5, R.drawable.n5
         ).shuffled().toMutableList()
 
-        val items2: MutableList<Int?> = MutableList(items.size / 2) { R.drawable.light_orange }
+        val items2: MutableList<Int?> = MutableList(items.size / 2) { R.drawable.light_blue }
 
         gridView.numColumns = items2.size
-        imageAdapter = ImageAdapter(items)
-        imageAdapter2 = ImageAdapter2(items2, items)
-        recyclerView.adapter = imageAdapter
-        gridView.adapter = imageAdapter2
+        imageAdapterRecyclerVIew = ImageAdapterRecyclerVIew(items)
+        imageAdapterGridView = ImageAdapterGridView(items2, items)
+        recyclerView.adapter = imageAdapterRecyclerVIew
+        gridView.adapter = imageAdapterGridView
 
         recyclerView.addOnItemTouchListener(object : RecyclerView.SimpleOnItemTouchListener() {
             override fun onInterceptTouchEvent(
@@ -133,16 +133,16 @@ class GameLevel3 : AppCompatActivity() {
 
         if (firstClickedPosition == null) {
             firstClickedPosition = position
-            val holder = recyclerView.findViewHolderForAdapterPosition(position) as? ImageAdapter.ViewHolder
-            holder?.let { imageAdapter.flipCard(it) }
+            val holder = recyclerView.findViewHolderForAdapterPosition(position) as? ImageAdapterRecyclerVIew.ViewHolder
+            holder?.let { imageAdapterRecyclerVIew.flipCard(it) }
         } else {
             val firstItem = items[firstClickedPosition!!]
             val secondItem = items[position]
 
-            val firstHolder = recyclerView.findViewHolderForAdapterPosition(firstClickedPosition!!) as? ImageAdapter.ViewHolder
-            val secondHolder = recyclerView.findViewHolderForAdapterPosition(position) as? ImageAdapter.ViewHolder
+            val firstHolder = recyclerView.findViewHolderForAdapterPosition(firstClickedPosition!!) as? ImageAdapterRecyclerVIew.ViewHolder
+            val secondHolder = recyclerView.findViewHolderForAdapterPosition(position) as? ImageAdapterRecyclerVIew.ViewHolder
 
-            secondHolder?.let { imageAdapter.flipCard(it) }
+            secondHolder?.let { imageAdapterRecyclerVIew.flipCard(it) }
 
             if (firstItem == secondItem) {
                 Handler(Looper.getMainLooper()).postDelayed({
@@ -151,9 +151,9 @@ class GameLevel3 : AppCompatActivity() {
                 }, 700)
                 attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
-                    imageAdapter.remove(firstClickedPosition!!)
-                    imageAdapter.remove(position)
-                    imageAdapter2.addItem(firstItem!!)
+                    imageAdapterRecyclerVIew.remove(firstClickedPosition!!)
+                    imageAdapterRecyclerVIew.remove(position)
+                    imageAdapterGridView.addItem(firstItem!!)
                     firstClickedPosition = null
 
                     val allNull = items.all { it.toString() == "null" }
@@ -176,8 +176,8 @@ class GameLevel3 : AppCompatActivity() {
                 }, 700)
                 attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
-                    firstHolder?.let { imageAdapter.flipBackCard(it) }
-                    secondHolder?.let { imageAdapter.flipBackCard(it) }
+                    firstHolder?.let { imageAdapterRecyclerVIew.flipBackCard(it) }
+                    secondHolder?.let { imageAdapterRecyclerVIew.flipBackCard(it) }
                     firstClickedPosition = null
                     winorlose.alpha = 0f
                 }, 1200)
