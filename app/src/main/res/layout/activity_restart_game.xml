@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:background="@drawable/main_menu_background"
     >
 
 
@@ -13,7 +14,7 @@
         android:layout_width="951dp"
         android:layout_height="650dp"
         android:layout_centerInParent="true"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints,UselessParent,TextSizeCheck">
 
         <TextView
             android:layout_width="match_parent"
@@ -21,8 +22,9 @@
             android:layout_gravity="center_horizontal"
             android:text="¡NIVEL COMPLETADO!"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="80sp"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText,VisualLintOverlap" />
 
         <ImageButton
             android:id="@+id/wonButton"
@@ -31,11 +33,13 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="200dp"
             android:layout_marginTop="180dp"
+            android:background="@drawable/rounded_button_continue"
+            android:importantForAccessibility="no"
+            android:padding="65dp"
+            android:scaleType="centerInside"
             android:src="@drawable/next"
             app:cornerRadius="30dp"
-            android:scaleType="centerInside"
-            android:background="@color/green"
-            />
+            tools:ignore="VisualLintBounds" />
 
         <ImageButton
             android:id="@+id/restartButton"
@@ -44,11 +48,13 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="180dp"
             android:layout_marginEnd="200dp"
+            android:background="@drawable/rounded_button_restart"
+            android:importantForAccessibility="no"
+            android:padding="50dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/restart"
             app:cornerRadius="30dp"
-            android:scaleType="centerCrop"
-            android:background="@color/light_orange"
-            />
+            tools:ignore="VisualLintBounds" />
 
         <TextView
             android:id="@+id/levelText"
@@ -57,7 +63,9 @@
             android:layout_marginEnd="610dp"
             android:layout_marginBottom="50dp"
             android:gravity="center|bottom"
-            android:textSize="40sp" />
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            tools:ignore="VisualLintOverlap" />
 
         <TextView
             android:id="@+id/timeText"
@@ -66,7 +74,8 @@
             android:layout_marginEnd="100dp"
             android:layout_marginBottom="50dp"
             android:gravity="center|bottom"
-            android:textSize="40sp"/>
+            android:textColor="@color/white"
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/attemptsText"
@@ -75,7 +84,9 @@
             android:layout_marginStart="530dp"
             android:layout_marginBottom="50dp"
             android:gravity="center|bottom"
-            android:textSize="40sp"/>
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            tools:ignore="VisualLintBounds" />
 
 
     </FrameLayout>
