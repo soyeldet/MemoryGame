@@ -9,19 +9,31 @@ class MusicService : Service() {
     private var mediaPlayer: MediaPlayer? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        // Inicializar MediaPlayer y reproducir la música
-        mediaPlayer?.isLooping = true
-        mediaPlayer?.start()
-        return START_STICKY // El servicio continuará ejecutándose incluso si la actividad cambia
+        // Verificamos la acción que se pasa desde el Intent
+        when (intent?.action) {
+            "START_MUSIC" -> {
+                if (mediaPlayer == null) {
+                    mediaPlayer = MediaPlayer.create(this, R.raw.musica)  // Asegúrate de usar tu archivo de música
+                    mediaPlayer?.isLooping = true
+                    mediaPlayer?.start()
+                }
+            }
+            "STOP_MUSIC" -> {
+                mediaPlayer?.stop()  // Detener la música
+                mediaPlayer?.release()  // Liberar los recursos
+                mediaPlayer = null
+            }
+        }
+        return START_STICKY
     }
 
     override fun onBind(intent: Intent?): IBinder? {
-        return null // No se necesita vinculación en este caso
+        return null
     }
 
     override fun onDestroy() {
-        mediaPlayer?.stop() // Detener la música cuando se destruye el servicio
-        mediaPlayer?.release() // Liberar recursos
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
-
 }

@@ -4,6 +4,7 @@ import com.example.memorygame.adapters.ImageAdapterRecyclerVIew
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.media.SoundPool
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -35,6 +36,11 @@ class GameLevel1 : AppCompatActivity() {
     private var attempts: Int = 0
     private var isClickable = true
     private var avatar: Int = 0
+
+    // Efectos de sonido
+    private lateinit var soundPool: SoundPool
+    private var correctSound: Int = 0
+    private var incorrectSound: Int = 0
 
 
     @SuppressLint("MissingInflatedId")
@@ -103,8 +109,18 @@ class GameLevel1 : AppCompatActivity() {
                 return true
             }
         })
+
+        // Inicializar SoundPool para efectos de sonido
+        soundPool = SoundPool.Builder()
+            .setMaxStreams(1)
+            .build()
+
+        correctSound = soundPool.load(this, R.raw.acierto, 1)
+        incorrectSound = soundPool.load(this, R.raw.fallo, 1)
+
     }
 
+    // Cronometro
     private fun startTimer() {
         if (!isRunning) {
             isRunning = true
@@ -132,7 +148,9 @@ class GameLevel1 : AppCompatActivity() {
             firstClickedPosition = position
             val holder =
                 recyclerView.findViewHolderForAdapterPosition(position) as? ImageAdapterRecyclerVIew.ViewHolder
-            holder?.let { imageAdapterRecyclerVIew.flipCard(it) }
+            holder?.let {
+                imageAdapterRecyclerVIew.flipCard(it)
+            }
         } else {
             val firstItem = items[firstClickedPosition!!]
             val secondItem = items[position]
@@ -142,12 +160,15 @@ class GameLevel1 : AppCompatActivity() {
             val secondHolder =
                 recyclerView.findViewHolderForAdapterPosition(position) as? ImageAdapterRecyclerVIew.ViewHolder
 
-            secondHolder?.let { imageAdapterRecyclerVIew.flipCard(it) }
+            secondHolder?.let {
+                imageAdapterRecyclerVIew.flipCard(it)
+            }
 
             if (firstItem == secondItem) {
-                Handler(Looper.getMainLooper()).postDelayed({
+                Handler(Looper.getMainLooper()).postDelayed( {
                 winorlose.alpha = 0.5f
                 winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.success_green))
+                    soundPool.play(correctSound, 1f, 1f, 0, 0, 1f)
                 }, 700)
                 attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
@@ -173,6 +194,7 @@ class GameLevel1 : AppCompatActivity() {
                 Handler(Looper.getMainLooper()).postDelayed({
                     winorlose.alpha = 0.5f
                     winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.error_red))
+                    soundPool.play(incorrectSound, 1f, 1f, 0, 0, 1f)
                 }, 700)
                 attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
@@ -184,4 +206,10 @@ class GameLevel1 : AppCompatActivity() {
             }
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        soundPool.release()  // Liberar los recursos del SoundPool
+    }
+
 }

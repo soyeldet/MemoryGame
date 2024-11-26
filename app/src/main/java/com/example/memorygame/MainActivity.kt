@@ -35,26 +35,17 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent(this, StartGameActivity::class.java)
 
-        avatarButton.setOnClickListener{
+        avatarButton.setOnClickListener {
+            // Iniciar el servicio para reproducir música
             val musicServiceIntent = Intent(this, MusicService::class.java)
-            startService(musicServiceIntent)
+            musicServiceIntent.action = "START_MUSIC"  // Acción para iniciar la música
+            startService(musicServiceIntent)  // Inicia el servicio y la música
 
-            mediaPlayer?.apply {
-                if (!isPlaying) {
-                    // canción en bucle.
-                    isLooping = true
-                    start()
-                }
-            }
-
+            // Inicia la siguiente actividad
             startActivity(intent)
         }
+
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mediaPlayer?.release()
-        // soundPool?.release()
-    }
 
 }
