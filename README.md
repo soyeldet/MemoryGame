@@ -1,4 +1,4 @@
-# Memory Game for Tablets
+# Memory Game
 
 ## Project Description
 
