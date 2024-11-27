@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
 import org.json.JSONArray
@@ -16,6 +17,7 @@ class AdminPanelActivity : AppCompatActivity() {
     private lateinit var gridView: GridView
     private lateinit var groupsJSON: MutableList<Int?>
     private var groups: MutableList<String?> = mutableListOf()
+    private lateinit var JSONDeleterButton: Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +32,7 @@ class AdminPanelActivity : AppCompatActivity() {
                 )
 
         gridView = findViewById(R.id.gridViewGroups)
+        JSONDeleterButton = findViewById(R.id.JSONDeleterButton)
 
         groupsJSON = getGroups();
 
@@ -50,7 +53,13 @@ class AdminPanelActivity : AppCompatActivity() {
             intent.putExtra("group", position+1)
             startActivity(intent)
         }
+
+        JSONDeleterButton.setOnClickListener{
+            val intent2 = Intent(this, DeleteJSONActivity::class.java)
+            startActivity(intent2)
         }
+
+    }
 
 
     private fun getGroups(): MutableList<Int?> {

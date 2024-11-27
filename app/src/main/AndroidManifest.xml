@@ -20,13 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameLevel1">
-
-        </activity>
-        <activity android:name=".GameLevel2">
-
-        </activity>
-        <activity android:name=".GameLevel3">
+        <activity android:name=".GameActivity">
 
         </activity>
         <activity android:name=".RestartGameActivity">
@@ -39,12 +33,18 @@
         <activity android:name=".AdminPanelActivity">
 
         </activity>
-        <activity android:name=".StartGameActivity">
+        <activity android:name=".MainMenuActivity">
 
         </activity>
         <activity android:name=".GroupActivity">
 
         </activity>
+        <activity android:name=".DeleteJSONActivity">
+
+        </activity>
+        <service android:name=".MusicService">
+
+        </service>
 
         <meta-data
             android:name="preloaded_fonts"

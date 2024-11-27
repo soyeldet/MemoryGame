@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="¿Quieres borrar todos los grupos?"
+            android:layout_marginBottom="160dp"
+            android:textSize="70sp"
+            >
+        </TextView>
+
+        <Button
+            android:id="@+id/yesButton"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="SI"
+            android:textSize="80sp"
+            android:background="@drawable/rounded_button"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="60dp"
+            >
+        </Button>
+
+        <Button
+            android:id="@+id/noButton"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:text="NO"
+            android:textSize="80sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/rounded_button"
+            android:layout_marginRight="150dp"
+            android:layout_marginTop="60dp"
+            >
+        </Button>
+
+    </FrameLayout>
+
+</LinearLayout>

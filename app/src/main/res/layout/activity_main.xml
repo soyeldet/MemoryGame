@@ -7,13 +7,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/avatarButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/icon">
+            android:src="@drawable/icon"
+            android:scaleType="center"
+            >
 
-        </ImageButton>
+        </ImageView>
 
     </FrameLayout>
 

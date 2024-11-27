@@ -1,5 +1,7 @@
 package com.example.memorygame.adapters
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +23,7 @@ class ImageAdapterAvatarsGV(private val items: MutableList<Int?>) : BaseAdapter(
         return position.toLong()
     }
 
+    @SuppressLint("ResourceType")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var view = convertView
         if (view == null) {
@@ -30,13 +33,15 @@ class ImageAdapterAvatarsGV(private val items: MutableList<Int?>) : BaseAdapter(
 
         val imageView: ImageView = view?.findViewById(R.id.imageView) ?: return view!!
 
-        if (items[position] == R.color.light_gray){
+        if (items[position] == Color.TRANSPARENT){
             imageView.isEnabled = false
             imageView.setOnClickListener(null)
+            imageView.alpha = 0.1f
+            imageView.setBackgroundColor(Color.TRANSPARENT)
+            imageView.setImageResource(Color.TRANSPARENT)
         } else {
             imageView.setImageResource(items[position]!!)
         }
-        imageView.setImageResource(items[position]!!)
 
         return view
     }

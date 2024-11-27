@@ -22,12 +22,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:layout_marginTop="85dp"
-            android:fontFamily="@font/comic_neue_light"
-            android:textStyle="bold"
-            android:textColor="@color/fuchsia"
+            android:fontFamily="@font/bungee_inline"
             android:text="ESCOGE TU AVATAR"
+            android:textColor="@color/black"
             android:textSize="100sp"
+            android:textStyle="bold"
             android:typeface="sans">
 
         </TextView>
@@ -46,7 +45,24 @@
             android:padding="16dp"
             android:layout_centerHorizontal="true"
             android:verticalSpacing="10dp"
-            tools:ignore="ObsoleteLayoutParam" />
+            tools:ignore="ObsoleteLayoutParam"
+            android:background="@android:color/transparent"
+            />
+
+        <ImageButton
+            android:id="@+id/volumeButton"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center|bottom"
+            android:scaleType="centerInside"
+            android:gravity="center"
+            android:layout_marginBottom="65dp"
+            android:src="@drawable/volume"
+            android:background="@android:color/transparent"
+            >
+
+        </ImageButton>
+
     </FrameLayout>
 
 </LinearLayout>

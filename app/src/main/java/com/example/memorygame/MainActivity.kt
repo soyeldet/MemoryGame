@@ -3,13 +3,15 @@ package com.example.memorygame
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
     @SuppressLint("WrongViewCast", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
@@ -22,11 +24,10 @@ class MainActivity : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 )
 
-        val intent = Intent(this, StartGameActivity::class.java)
-        val avatarButton = findViewById<ImageButton>(R.id.avatarButton)
+        val intent = Intent(this, MainMenuActivity::class.java)
 
-        avatarButton.setOnClickListener{
+        Handler(Looper.getMainLooper()).postDelayed({
             startActivity(intent)
-        }
+        }, 800)
     }
 }

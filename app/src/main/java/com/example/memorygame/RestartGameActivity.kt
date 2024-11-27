@@ -10,9 +10,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import android.content.Context
-import android.widget.Toast
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -37,11 +35,12 @@ class RestartGameActivity : AppCompatActivity() {
                 )
 
 
-        val level: Int? = intent.getIntExtra("level", -1)
+        var level: Int? = intent.getIntExtra("level", -1)
         val seconds: Int? = intent.getIntExtra("seconds", -1)
         val minutes: Int? = intent.getIntExtra("minutes", -1)
         val attempts: Int? = intent.getIntExtra("attempts", -1)
         val avatar: Int? = intent.getIntExtra("avatar", -1)
+
 
         val wonButton = findViewById<ImageButton>(R.id.wonButton)
         val restartButton = findViewById<ImageButton>(R.id.restartButton)
@@ -56,24 +55,25 @@ class RestartGameActivity : AppCompatActivity() {
         val timeFormatted = "$minutes:$seconds"
 
         if (level == 1) {
-            intent2 = Intent(this, GameLevel1::class.java)
-            intent3 = Intent(this, GameLevel2::class.java)
+            intent2 = Intent(this, GameActivity::class.java)
+            intent3 = Intent(this, GameActivity::class.java)
         } else if (level == 2) {
-            intent2 = Intent(this, GameLevel2::class.java)
-            intent3 = Intent(this, GameLevel3::class.java)
+            intent2 = Intent(this, GameActivity::class.java)
+            intent3 = Intent(this, GameActivity::class.java)
         } else if (level == 3) {
             wonButton.setBackgroundResource(R.drawable.rounded_button_exit)
             val bitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.exit)
             wonButton.setImageBitmap(bitmap)
 
-
-            intent2 = Intent(this, GameLevel3::class.java)
-            intent3 = Intent(this, MainActivity::class.java)
+            intent3 = Intent(this, GameActivity::class.java)
+            intent3 = Intent(this, MainMenuActivity::class.java)
         }
 
         wonButton.setOnClickListener {
             saveAvatarData(this, avatar ?: -1, level ?: 1, timeFormatted, attempts ?: 0)
-            intent3.putExtra("avatar2", avatar)
+            intent3.putExtra("avatar", avatar)
+            level = level!!+1
+            intent3.putExtra("level", level)
             startActivity(intent3)
         }
 
@@ -85,6 +85,7 @@ class RestartGameActivity : AppCompatActivity() {
     }
 
     fun saveAvatarData(context: Context, avatar: Int, level: Int, time: String, attempts: Int) {
+
         if (avatar == -1) {
             return
         }

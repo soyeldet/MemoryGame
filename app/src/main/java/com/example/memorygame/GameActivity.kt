@@ -18,8 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.memorygame.adapters.ImageAdapterGridView
 
-
-class GameLevel3 : AppCompatActivity() {
+class GameActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var imageAdapterRecyclerVIew: ImageAdapterRecyclerVIew
     private lateinit var imageAdapterGridView: ImageAdapterGridView
@@ -27,15 +26,17 @@ class GameLevel3 : AppCompatActivity() {
     private lateinit var frameLayout: FrameLayout
     private lateinit var winorlose: FrameLayout
     private var firstClickedPosition: Int? = null
-    private var isClickable = true
-    private var level: Int = 3
+    private var level: Int = 1
     private var seconds: Int = 0
     private var minutes: Int = 0
     private var isRunning = false
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
     private var attempts: Int = 0
+    private var isClickable = true
     private var avatar: Int = 0
+    private var items: MutableList<Int?> = mutableListOf()
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,15 +50,15 @@ class GameLevel3 : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 )
 
-        avatar = intent.getIntExtra("avatar2", -1)
+        avatar = intent.getIntExtra("avatar", -1)
+
+        level = intent.getIntExtra("level", 1)
 
         recyclerView = findViewById(R.id.recyclerView)
         gridView = findViewById(R.id.gridVIew)
         frameLayout = findViewById(R.id.frameLayout)
         winorlose = findViewById(R.id.winorlose)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val gridLayoutManager = GridLayoutManager(this, 5)
-        recyclerView.layoutManager = gridLayoutManager
         recyclerView.isNestedScrollingEnabled = false
         recyclerView.isScrollContainer = false
         gridView.isNestedScrollingEnabled = false
@@ -66,13 +67,37 @@ class GameLevel3 : AppCompatActivity() {
         handler = Handler()
         startTimer()
 
-        val items: MutableList<Int?> = mutableListOf(
-            R.drawable.n1, R.drawable.n1,
-            R.drawable.n2, R.drawable.n2,
-            R.drawable.n3, R.drawable.n3,
-            R.drawable.n4, R.drawable.n4,
-            R.drawable.n5, R.drawable.n5
-        ).shuffled().toMutableList()
+        if (level == 1){
+            val gridLayoutManager = GridLayoutManager(this, 3)
+            recyclerView.layoutManager = gridLayoutManager
+
+            items = mutableListOf(
+                R.drawable.q1, R.drawable.q1,
+                R.drawable.q2, R.drawable.q2,
+                R.drawable.q3, R.drawable.q3
+            ).shuffled().toMutableList()
+        } else if (level == 2) {
+            val gridLayoutManager = GridLayoutManager(this, 4)
+            recyclerView.layoutManager = gridLayoutManager
+
+            items = mutableListOf(
+                R.drawable.c1, R.drawable.c1,
+                R.drawable.c2, R.drawable.c2,
+                R.drawable.c3, R.drawable.c3,
+                R.drawable.c4, R.drawable.c4,
+            ).shuffled().toMutableList()
+        } else if (level == 3) {
+            val gridLayoutManager = GridLayoutManager(this, 5)
+            recyclerView.layoutManager = gridLayoutManager
+
+            items = mutableListOf(
+                R.drawable.n1, R.drawable.n1,
+                R.drawable.n2, R.drawable.n2,
+                R.drawable.n3, R.drawable.n3,
+                R.drawable.n4, R.drawable.n4,
+                R.drawable.n5, R.drawable.n5
+            ).shuffled().toMutableList()
+        }
 
         val items2: MutableList<Int?> = MutableList(items.size / 2) { R.drawable.light_blue }
 
@@ -105,7 +130,6 @@ class GameLevel3 : AppCompatActivity() {
                 return true
             }
         })
-
     }
 
     private fun startTimer() {
@@ -133,21 +157,24 @@ class GameLevel3 : AppCompatActivity() {
 
         if (firstClickedPosition == null) {
             firstClickedPosition = position
-            val holder = recyclerView.findViewHolderForAdapterPosition(position) as? ImageAdapterRecyclerVIew.ViewHolder
+            val holder =
+                recyclerView.findViewHolderForAdapterPosition(position) as? ImageAdapterRecyclerVIew.ViewHolder
             holder?.let { imageAdapterRecyclerVIew.flipCard(it) }
         } else {
             val firstItem = items[firstClickedPosition!!]
             val secondItem = items[position]
 
-            val firstHolder = recyclerView.findViewHolderForAdapterPosition(firstClickedPosition!!) as? ImageAdapterRecyclerVIew.ViewHolder
-            val secondHolder = recyclerView.findViewHolderForAdapterPosition(position) as? ImageAdapterRecyclerVIew.ViewHolder
+            val firstHolder =
+                recyclerView.findViewHolderForAdapterPosition(firstClickedPosition!!) as? ImageAdapterRecyclerVIew.ViewHolder
+            val secondHolder =
+                recyclerView.findViewHolderForAdapterPosition(position) as? ImageAdapterRecyclerVIew.ViewHolder
 
             secondHolder?.let { imageAdapterRecyclerVIew.flipCard(it) }
 
             if (firstItem == secondItem) {
                 Handler(Looper.getMainLooper()).postDelayed({
-                    winorlose.alpha = 0.5f
-                    winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.success_green))
+                winorlose.alpha = 0.5f
+                winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.success_green))
                 }, 700)
                 attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
