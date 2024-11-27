@@ -37,10 +37,12 @@ class AdminPanelActivity : AppCompatActivity() {
         JSONDeleterButton = findViewById(R.id.JSONDeleterButton)
         backButton = findViewById(R.id.backButton)
 
-        groupsJSON = getGroups();
+        // Obtiene los grupos desde el archivo JSON
+        groupsJSON = getGroups()
 
-        for (i in 0 until groupsJSON.size){
-            groups.add("GRUPO " + (i+1))
+        // Rellena la lista de grupos con nombres "GRUPO X"
+        for (i in 0 until groupsJSON.size) {
+            groups.add("GRUPO " + (i + 1))
         }
 
         val adapter = ArrayAdapter(
@@ -53,23 +55,24 @@ class AdminPanelActivity : AppCompatActivity() {
 
         gridView.setOnItemClickListener { _, _, position, _ ->
             val intent = Intent(this, GroupActivity::class.java)
-            intent.putExtra("group", position+1)
+            intent.putExtra("group", position + 1)
             startActivity(intent)
         }
 
-        JSONDeleterButton.setOnClickListener{
+        // Botón para borrar los archivos JSON
+        JSONDeleterButton.setOnClickListener {
             val intent = Intent(this, DeleteJSONActivity::class.java)
             startActivity(intent)
         }
 
-        backButton.setOnClickListener{
+        // Botón para regresar al menú principal
+        backButton.setOnClickListener {
             val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
         }
-
     }
 
-
+    // Función para obtener la lista de grupose del archivo JSON
     private fun getGroups(): MutableList<Int?> {
         val file = File(this.filesDir, "player_data.json")
 
@@ -83,8 +86,8 @@ class AdminPanelActivity : AppCompatActivity() {
         }
 
         val groups = playerData.getJSONArray("groups")
-
         val groupList = mutableListOf<Int?>()
+
         for (i in 0 until groups.length()) {
             groupList.add(groups.optInt(i))
         }
