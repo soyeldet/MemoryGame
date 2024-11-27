@@ -2,7 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/light_blue"
+    >
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -65,7 +67,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Avatar 1"
+                    android:text="Avatar 1 (Mono)"
                     android:gravity="center"
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
@@ -112,7 +114,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Avatar 2"
+                    android:text="Avatar 2 (Tiburon)"
                     android:gravity="center"
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
@@ -159,7 +161,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Avatar 3"
+                    android:text="Avatar 3 (Tortuga)"
                     android:gravity="center"
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
@@ -206,7 +208,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Avatar 4"
+                    android:text="Avatar 4 (Serpiente)"
                     android:gravity="center"
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
@@ -253,7 +255,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Avatar 5"
+                    android:text="Avatar 5 (Pájaro)"
                     android:gravity="center"
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
@@ -295,6 +297,19 @@
             </TableRow>
 
         </TableLayout>
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/back_button"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent"
+            >
+
+        </ImageButton>
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

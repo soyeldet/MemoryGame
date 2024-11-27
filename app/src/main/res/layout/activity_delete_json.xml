@@ -27,9 +27,9 @@
             android:gravity="center"
             android:text="SI"
             android:textSize="80sp"
-            android:background="@drawable/rounded_button"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="60dp"
+            android:backgroundTint="#33BB34"
             >
         </Button>
 
@@ -41,9 +41,9 @@
             android:textSize="80sp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:background="@drawable/rounded_button"
             android:layout_marginRight="150dp"
             android:layout_marginTop="60dp"
+            android:backgroundTint="#FF0000"
             >
         </Button>
 

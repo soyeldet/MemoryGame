@@ -1,9 +1,11 @@
 package com.example.memorygame
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +17,9 @@ class GroupActivity : AppCompatActivity() {
 
     private lateinit var groupsJSON: JSONObject
     private var group: Int? = null
+    private lateinit var backButton: ImageButton
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         super.onCreate(savedInstanceState)
@@ -27,6 +31,8 @@ class GroupActivity : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 )
 
+        backButton = findViewById(R.id.backButton)
+
         group = intent.getIntExtra("group", -1)
         if (group == -1) {
             Toast.makeText(this, "Grupo no encontrado", Toast.LENGTH_SHORT).show()
@@ -35,6 +41,11 @@ class GroupActivity : AppCompatActivity() {
 
         groupsJSON = getGroups()
         loadGroupData(group!!)
+
+        backButton.setOnClickListener{
+            val intent = Intent(this, AdminPanelActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun getGroups(): JSONObject {
@@ -82,8 +93,6 @@ class GroupActivity : AppCompatActivity() {
         val level1TextView = findViewById<TextView>(level1TextId)
         val level2TextView = findViewById<TextView>(level2TextId)
         val level3TextView = findViewById<TextView>(level3TextId)
-
-        avatarTextView.text = "Avatar $avatar"
 
         for (i in 0 until levels.length()) {
             val levelData = levels.getJSONObject(i)

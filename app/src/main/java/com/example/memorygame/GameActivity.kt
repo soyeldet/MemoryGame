@@ -142,8 +142,8 @@ class GameActivity : AppCompatActivity() {
             .setMaxStreams(1)
             .build()
 
-        correctSound = soundPool.load(this, R.raw.acierto, 1)
-        incorrectSound = soundPool.load(this, R.raw.fallo, 1)
+        correctSound = soundPool.load(this, R.raw.success, 1)
+        incorrectSound = soundPool.load(this, R.raw.fail, 1)
 
     }
 
@@ -195,7 +195,9 @@ class GameActivity : AppCompatActivity() {
                 Handler(Looper.getMainLooper()).postDelayed( {
                 winorlose.alpha = 0.5f
                 winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.success_green))
-                    soundPool.play(correctSound, 1f, 1f, 0, 0, 1f)
+                    Handler(Looper.getMainLooper()).postDelayed({
+                    soundPool.play(correctSound, 0.5f, 0.5f, 0, 0, 1f)
+                    }, 350)
                 }, 700)
                 attempts++
                 Handler(Looper.getMainLooper()).postDelayed({
@@ -221,7 +223,9 @@ class GameActivity : AppCompatActivity() {
                 Handler(Looper.getMainLooper()).postDelayed({
                     winorlose.alpha = 0.5f
                     winorlose.setBackgroundColor(ContextCompat.getColor(this, R.color.error_red))
-                    soundPool.play(incorrectSound, 1f, 1f, 0, 0, 1f)
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        soundPool.play(incorrectSound, 0.5f, 0.5f, 0, 0, 1f)
+                    }, 350)
                 }, 700)
                 attempts++
                 Handler(Looper.getMainLooper()).postDelayed({

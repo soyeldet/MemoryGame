@@ -32,9 +32,6 @@ class DeleteJSONActivity : AppCompatActivity() {
         yesButton = findViewById(R.id.yesButton)
         noButton = findViewById(R.id.noButton)
 
-
-
-
         noButton.setOnClickListener{
             val intent = Intent(this, AdminPanelActivity::class.java)
             startActivity(intent)
