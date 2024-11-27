@@ -36,7 +36,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
             </TableRow>
 
             <TableRow>
@@ -70,7 +70,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel1avatar1"
                     android:layout_width="0dp"
@@ -81,7 +81,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel2avatar1"
                     android:layout_width="0dp"
@@ -92,7 +92,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel3avatar1"
                     android:layout_width="0dp"
@@ -103,7 +103,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
             </TableRow>
 
             <TableRow>
@@ -117,7 +117,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel1avatar2"
                     android:layout_width="0dp"
@@ -128,7 +128,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel2avatar2"
                     android:layout_width="0dp"
@@ -139,7 +139,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel3avatar2"
                     android:layout_width="0dp"
@@ -150,7 +150,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
             </TableRow>
 
             <TableRow>
@@ -164,7 +164,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel1avatar3"
                     android:layout_width="0dp"
@@ -175,7 +175,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel2avatar3"
                     android:layout_width="0dp"
@@ -186,7 +186,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel3avatar3"
                     android:layout_width="0dp"
@@ -197,7 +197,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
             </TableRow>
 
             <TableRow>
@@ -211,7 +211,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel1avatar4"
                     android:layout_width="0dp"
@@ -222,7 +222,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel2avatar4"
                     android:layout_width="0dp"
@@ -233,7 +233,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel3avatar4"
                     android:layout_width="0dp"
@@ -244,7 +244,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
             </TableRow>
 
             <TableRow>
@@ -258,7 +258,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel1avatar5"
                     android:layout_width="0dp"
@@ -269,7 +269,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel2avatar5"
                     android:layout_width="0dp"
@@ -280,7 +280,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
                 <TextView
                     android:id="@+id/nivel3avatar5"
                     android:layout_width="0dp"
@@ -291,7 +291,7 @@
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:padding="16dp"
-                    android:background="@drawable/border" />
+                    android:background="@drawable/table_border" />
             </TableRow>
 
         </TableLayout>

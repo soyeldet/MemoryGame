@@ -22,7 +22,7 @@
         android:contentDescription="TODO"
         android:scaleType="centerInside"
         android:layout_gravity="center"
-        tools:ignore="ContentDescription,HardcodedText,ObsoleteLayoutParam,RtlHardcoded" />>
+        tools:ignore="ContentDescription,HardcodedText,ObsoleteLayoutParam,RtlHardcoded" />
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

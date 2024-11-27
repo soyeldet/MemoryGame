@@ -5,21 +5,29 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:orientation="horizontal">
+android:orientation="horizontal"
+android:background="@drawable/main_menu_background"
+    >
 
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:ignore="MissingConstraints">
+    tools:ignore="MissingConstraints"
+
+    >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="150dp"
-        android:text="MENU PRINCIPAL"
+        android:fontFamily="@font/comic_neue_light"
+        android:text="MEMORY"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="100sp"
+        android:textStyle="bold"
+        android:typeface="sans"
         tools:ignore="HardcodedText" />
 
     <Button
@@ -28,10 +36,10 @@ android:orientation="horizontal">
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="340dp"
+        android:backgroundTint="#5100FA0C"
+        android:text="JUGAR"
         android:textSize="30sp"
-        android:text="JUGADOR"
-        tools:ignore="HardcodedText">
-    </Button>
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/adminButton"
@@ -39,10 +47,11 @@ android:orientation="horizontal">
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="460dp"
+        android:backgroundTint="#59068CFD"
+        android:text="ADMINISTRAR"
         android:textSize="30sp"
-        android:text="ADMIN"
-        tools:ignore="HardcodedText">
-    </Button>
+        app:rippleColor="#808080"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/musicButton"

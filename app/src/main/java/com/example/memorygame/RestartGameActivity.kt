@@ -62,7 +62,7 @@ class RestartGameActivity : AppCompatActivity() {
             intent2 = Intent(this, GameLevel2::class.java)
             intent3 = Intent(this, GameLevel3::class.java)
         } else if (level == 3) {
-            wonButton.setBackgroundColor(ContextCompat.getColor(this, R.color.red))
+            wonButton.setBackgroundResource(R.drawable.rounded_button_exit)
             val bitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.exit)
             wonButton.setImageBitmap(bitmap)
 

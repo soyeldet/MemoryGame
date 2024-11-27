@@ -50,8 +50,6 @@ class AdminPanelActivity : AppCompatActivity() {
             intent.putExtra("group", position+1)
             startActivity(intent)
         }
-
-
         }
 
 
