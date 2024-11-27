@@ -1,4 +1,4 @@
-# Memory Game for Tablets
+# Memory Game
 
 ## Project Description
 
@@ -19,10 +19,10 @@ This project is a memory game designed specifically for 10-inch tablets, develop
   - **Reyes Magos**
 
 - **Data Storage**: 
-  - Player name
-  - Time taken for each level
-  - Number of mistakes made
-  - Date and time of the game
+  - Player name.
+  - Time taken for each level.
+  - Number of tries.
+  - Date and time of the game.
   - Data stored in JSON format.
 
 ## Installation
