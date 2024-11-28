@@ -111,7 +111,7 @@ class AvatarsActivity : AppCompatActivity() {
 
         // Obtiene el grupo de avatares actuales.
         val groups = playerData.getJSONArray("groups")
-        val currentGroup = getCurrentGroup(groups)
+        var currentGroup = getCurrentGroup(groups)
 
         // Asigna los avatares predeterminados (del 1 al 5).
         val avatar1 = R.drawable.a1
@@ -167,6 +167,15 @@ class AvatarsActivity : AppCompatActivity() {
                 return group
             }
         }
-        return null
+        val newGroup = JSONObject().apply {
+            put("group", groups.length() + 1)  // Asigna un número único al nuevo grupo
+            put("avatars", JSONArray())  // Inicializa el array de avatares vacío
+        }
+
+        // Agrega el nuevo grupo al final de la lista de grupos
+        groups.put(newGroup)
+
+        // Devuelve el nuevo grupo
+        return newGroup
     }
 }

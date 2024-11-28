@@ -81,7 +81,7 @@ class RestartGameActivity : AppCompatActivity() {
 
             val groups = playerData.getJSONArray("groups")
 
-            var currentGroup = getCurrentGroup(groups)
+            var currentGroup = getCurrentGroup(groups, level)
 
             if (currentGroup != null) {
                 if (currentGroup.getJSONArray("avatars").length() >= 5){
@@ -138,7 +138,7 @@ class RestartGameActivity : AppCompatActivity() {
             val groups = playerData.getJSONArray("groups")
 
             // Buscamos un grupo disponible para agregar el avatar
-            var currentGroup = getCurrentGroup(groups)
+            var currentGroup = getCurrentGroup(groups, level)
 
             // Si no hay grupo disponible o el grupo tiene 5 avatares, crearemos uno nuevo
             if (currentGroup == null) {
@@ -212,15 +212,22 @@ class RestartGameActivity : AppCompatActivity() {
     }
 
     // Función para encontrar un grupo con menos de 5 avatares
-    fun getCurrentGroup(groups: JSONArray): JSONObject? {
-        for (i in 0 until groups.length()) {
+    fun getCurrentGroup(groups: JSONArray, level: Int): JSONObject? {
+        for (i in groups.length() - 1 downTo 0) { // Recorre los grupos de atrás hacia adelante
             val group = groups.getJSONObject(i)
             val avatars = group.getJSONArray("avatars")
-            // Si hay espacio en el grupo, lo devuelve
+
             if (avatars.length() < 5) {
                 return group
             }
+
+            if (avatars.length() == 5 && (level == 2 || level == 3)) {
+                return group
+            }
         }
+
+
+
         return null  // Si no hay espacio, retorna null
     }
 
